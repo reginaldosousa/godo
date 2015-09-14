@@ -1,18 +1,14 @@
 package main
 
 import (
-  "fmt"
   "log"
   "net/http"
+
+  "github.com/reginaldosousa/godo/handlers"
 )
 
 func main() {
-  http.HandleFunc("/healthcheck", healthcheckHandler)
+  http.HandleFunc("/healthcheck", handlers.HealthcheckHandler)
 
   log.Fatal(http.ListenAndServe(":8181", nil))
-}
-
-
-func healthcheckHandler(w http.ResponseWriter, r *http.Request) {
-  fmt.Fprintf(w, "WORKING")
 }
